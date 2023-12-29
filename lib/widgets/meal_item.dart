@@ -48,10 +48,17 @@ class MealItem extends StatelessWidget {
   }
 
   void selectMeal(BuildContext context) {
-    Navigator.of(context).pushNamed(
+    Navigator.of(context)
+        .pushNamed(
       MealDetailScreen.routeName,
       arguments: id,
-    );
+    )
+        .then((value) {
+      // when delete button is clicked
+      if (value != null) {
+        // removeItem(value);
+      }
+    });
   }
 
   @override
@@ -75,7 +82,7 @@ class MealItem extends StatelessWidget {
                   ),
                   child: Image.network(
                     imageUrl,
-                    height: 250,
+                    height: MediaQuery.of(context).size.height * 0.4,
                     width: double.infinity,
                     fit: BoxFit.cover,
                   ),
